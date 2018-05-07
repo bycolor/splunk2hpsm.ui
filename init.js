@@ -17,9 +17,13 @@ var appSplunkForm = new Vue({
 			debugger;
 			//appSplunkForm.$refs.splunkForm.submit();
 			var data = {
-				user: appSplunkForm.$refs.splunkUser.value,
-				pass: appSplunkForm.$refs.splunkPass.value,
-			}
+				params: {
+					user: appSplunkForm.$refs.splunkUser.value,
+					pass: appSplunkForm.$refs.splunkPass.value,
+				},
+				emulateJSON : true,
+				method: "GET"
+			};
 
 			this.$http.get('http://localhost:8000/api/splunk/sessionkey', data)
 			.then(function(response) {
